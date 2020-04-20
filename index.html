@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <title>Layer for Javascript Canvas</title>
+    <script type="module">
+        import { Layer } from './Layer.js'
+        const layer = new Layer();
+
+        layer.createLayer({ layerId: 'MainLayer' });
+        const secondLayer = layer.createLayer({ layerId: 'SecondLayer' });
+        const mainLayer = layer.getLayerById('MainLayer');
+        const allLayers = layer.getAllLayers();
+        console.log('mainLayer', mainLayer);
+        console.log('allLayers', allLayers);
+
+        mainLayer.context.fillStyle = 'yellow';
+        mainLayer.context.fillRect(50, 50, 250, 80);
+        mainLayer.context.fillStyle = "black";
+        mainLayer.context.font = "normal 20pt Arial";
+        mainLayer.context.fillText("Main Layer", 100, 98);
+
+        secondLayer.context.fillStyle = 'blue';
+        secondLayer.context.fillRect(150, 150, 250, 80);
+        secondLayer.context.fillStyle = "white";
+        secondLayer.context.font = "normal 20pt Arial";
+        secondLayer.context.fillText("Second Layer", 190, 198);
+    </script>
+    <style>
+        .LayerContainer {
+            position: relative;
+        }
+
+        .LayerContainer>canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid #000000;
+            image-rendering: optimizeSpeed;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: -o-crisp-edges;
+            image-rendering: pixelated;
+            -ms-interpolation-mode: nearest-neighbor;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
